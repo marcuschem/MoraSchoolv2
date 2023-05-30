@@ -5,10 +5,10 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-from core.abstract.viewsets import AbstractViewSet
-from core.comment.models import Comment
-from core.comment.serializers import CommentSerializer
-from core.auth.permissions import UserPermission
+from ..abstract.viewsets import AbstractViewSet
+from ..comment.models import Comment
+from ..comment.serializers import CommentSerializer
+from ..auth.permissions import UserPermission
 
 
 class CommentViewSet(AbstractViewSet):

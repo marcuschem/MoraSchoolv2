@@ -1,9 +1,9 @@
 from rest_framework import status
 
 
-from core.fixtures.user import user
-from core.fixtures.post import post
-from core.fixtures.comment import comment
+from ...fixtures.user import user
+from ...fixtures.post import post
+from ...fixtures.comment import comment
 
 
 class TestCommentViewSet:
@@ -26,13 +26,13 @@ class TestCommentViewSet:
         assert response.status_code == status.HTTP_200_OK
         assert response.data["id"] == comment.public_id.hex
         assert response.data["body"] == comment.body
-        assert response.data["author"]["id"] == comment.author.public_id.hex
+        assert response.data["commenter"]["id"] == comment.author.public_id.hex
 
     def test_create(self, client, user, post):
         client.force_authenticate(user=user)
         data = {
             "body": "Test Comment Body",
-            "author": user.public_id.hex,
+            "commenter": user.public_id.hex,
             "post": post.public_id.hex
         }
         response = client.post(
@@ -40,13 +40,13 @@ class TestCommentViewSet:
         )
         assert response.status_code == status.HTTP_201_CREATED
         assert response.data["body"] == data["body"]
-        assert response.data["author"]["id"] == user.public_id.hex
+        assert response.data["commenter"]["id"] == user.public_id.hex
 
     def test_update(self, client, user, post, comment):
         client.force_authenticate(user=user)
         data = {
             "body": "Test Comment Body",
-            "author": user.public_id.hex,
+            "commenter": user.public_id.hex,
             "post": post.public_id.hex
         }
         response = client.put(

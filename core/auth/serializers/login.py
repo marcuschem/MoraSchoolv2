@@ -3,7 +3,7 @@ from rest_framework_simplejwt.settings import api_settings
 from django.contrib.auth.models import update_last_login
 
 
-from core.user.serializers import UserSerializer
+from ...user.serializers import UserSerializer
 
 
 class LoginSerializer(TokenObtainSerializer):

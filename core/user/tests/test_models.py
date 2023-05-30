@@ -1,7 +1,7 @@
 import pytest
 
 
-from core.user.models import User
+from ..models import User
 
 
 data_user = {

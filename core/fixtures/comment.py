@@ -1,11 +1,11 @@
 import pytest
 
 
-from core.fixtures.user import user
-from core.fixtures.post import post
+from .user import user
+from .post import post
 
 
-from core.comment.models import Comment
+from ..comment.models import Comment
 
 
 @pytest.fixture

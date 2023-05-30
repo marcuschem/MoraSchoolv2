@@ -2,14 +2,14 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 
-from core.abstract.serializers import AbstractSerializer
-from core.post.models import Post
-from core.user.models import User
-from core.user.serializers import UserSerializer
+from ..abstract.serializers import AbstractSerializer
+from ..post.models import Post
+from ..user.models import User
+from ..user.serializers import UserSerializer
 
 
 class PostSerializer(AbstractSerializer):
-    author = serializers.SlugRelatedField(
+    creator = serializers.SlugRelatedField(
         queryset=User.objects.all(),
         slug_field="public_id"
     )
@@ -36,10 +36,10 @@ class PostSerializer(AbstractSerializer):
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
-        author = User.objects.get_object_by_public_id(
+        creator = User.objects.get_object_by_public_id(
             rep["author"]
         )
-        rep["author"] = UserSerializer(author).data
+        rep["author"] = UserSerializer(creator).data
         return rep
 
     def update(self, instance, validated_data):
@@ -52,7 +52,7 @@ class PostSerializer(AbstractSerializer):
     class Meta:
         model = Post
         fields = [
-            "id", "author", "body", "edited", "liked", "likes_count", "created", "updated",
+            "id", "creator", "body", "edited", "liked", "likes_count", "created", "updated",
         ]
         read_only_fields = ["edited"]
 

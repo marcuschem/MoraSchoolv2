@@ -1,7 +1,7 @@
 from django.db import models
 
 
-from core.abstract.models import AbstractModel, AbstractManager
+from ..abstract.models import AbstractModel, AbstractManager
 
 
 class PostManager(AbstractManager):
@@ -19,5 +19,5 @@ class Post(AbstractModel):
     objects = PostManager()
 
     def __str__(self):
-        return f"{self.author.name}"
+        return f"{self.creator.name}"
 

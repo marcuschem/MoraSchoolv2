@@ -4,12 +4,10 @@ import uuid
 from cloudinary_storage.storage import MediaCloudinaryStorage
 from django.core.validators import FileExtensionValidator
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
-from django.http import Http404
 
 
-from core.abstract.models import AbstractManager, AbstractModel
+from ..abstract.models import AbstractManager, AbstractModel
 
 
 class UserManager(BaseUserManager, AbstractManager):

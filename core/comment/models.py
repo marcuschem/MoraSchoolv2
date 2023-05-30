@@ -1,7 +1,7 @@
 from django.db import models
 
 
-from core.abstract.models import AbstractModel, AbstractManager
+from ..abstract.models import AbstractModel, AbstractManager
 
 
 class CommentManager(AbstractManager):

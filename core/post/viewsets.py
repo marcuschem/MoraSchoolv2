@@ -1,13 +1,12 @@
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.permissions import BasePermission, SAFE_METHODS
 from rest_framework import status
 from rest_framework.decorators import action
 
 
-from core.abstract.viewsets import AbstractViewSet
-from core.post.models import Post
-from core.post.serializers import PostSerializer
+from ..abstract.viewsets import AbstractViewSet
+from ..post.models import Post
+from ..post.serializers import PostSerializer
 
 
 class PostViewSet(AbstractViewSet):
